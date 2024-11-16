@@ -1,0 +1,7 @@
+{:paths ["src"]
+ :deps {org.babashka/cli {:mvn/version "0.8.61"}}
+ :tasks
+ {run-clojure  {:doc "Run under clojure"
+                :task (clojure "-M" "-m" "tester")}
+  run-babashka {:doc "Run under babashka"
+                :task tester/-main}}}

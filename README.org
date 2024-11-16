@@ -1,0 +1,43 @@
+This is an example project that demonstrates that as of [2024-11-16 Sat]
+org.babashka/cli runs differently under babashka and clojure. All I can guess at
+is that under babashka some older version of the library is getting hit.
+
+* Under clojure
+
+#+begin_src bash :results output
+  bb run-clojure
+#+end_src
+
+#+RESULTS:
+: :input "--config" "config-dev.edn" "--config" "other.edn" "dns"
+: :output {:dispatch ["dns"], :opts {:config ["config-dev.edn" "other.edn"]}, :args nil}
+: :input "--config" "config-dev.edn" "--config" "other.edn" "dns" "get"
+: :output {:dispatch ["dns" "get"], :opts {:config ["config-dev.edn" "other.edn"]}, :args nil}
+: :input "--config" "config-dev.edn" "--verbose" "--config" "other.edn" "dns" "get"
+: :output {:dispatch ["dns" "get"], :opts {:config ["config-dev.edn" "other.edn"], :verbose true}, :args nil}
+: :input "--config" "config-dev.edn" "--config=other.edn" "dns" "get"
+: :output {:dispatch ["dns" "get"], :opts {:config ["config-dev.edn" "other.edn"]}, :args nil}
+
+* Under babashka
+
+#+begin_src bash :results output
+  bb run-babashka
+#+end_src
+
+#+RESULTS:
+: :input "--config" "config-dev.edn" "--config" "other.edn" "dns"
+: :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns"]}, :args nil}
+: :input "--config" "config-dev.edn" "--config" "other.edn" "dns" "get"
+: :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns" "get"]}, :args nil}
+: :input "--config" "config-dev.edn" "--verbose" "--config" "other.edn" "dns" "get"
+: :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns" "get"], :verbose true}, :args nil}
+: :input "--config" "config-dev.edn" "--config=other.edn" "dns" "get"
+: :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns" "get"]}, :args nil}
+
+
+#+begin_src bash :results output
+  bb --version
+#+end_src
+
+#+RESULTS:
+: babashka v1.12.194
