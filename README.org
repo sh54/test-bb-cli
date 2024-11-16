@@ -9,6 +9,7 @@ is that under babashka some older version of the library is getting hit.
 #+end_src
 
 #+RESULTS:
+#+BEGIN_EXAMPLE
 : :input "--config" "config-dev.edn" "--config" "other.edn" "dns"
 : :output {:dispatch ["dns"], :opts {:config ["config-dev.edn" "other.edn"]}, :args nil}
 : :input "--config" "config-dev.edn" "--config" "other.edn" "dns" "get"
@@ -17,6 +18,7 @@ is that under babashka some older version of the library is getting hit.
 : :output {:dispatch ["dns" "get"], :opts {:config ["config-dev.edn" "other.edn"], :verbose true}, :args nil}
 : :input "--config" "config-dev.edn" "--config=other.edn" "dns" "get"
 : :output {:dispatch ["dns" "get"], :opts {:config ["config-dev.edn" "other.edn"]}, :args nil}
+#+END_EXAMPLE
 
 * Under babashka
 
@@ -25,6 +27,7 @@ is that under babashka some older version of the library is getting hit.
 #+end_src
 
 #+RESULTS:
+#+BEGIN_EXAMPLE
 : :input "--config" "config-dev.edn" "--config" "other.edn" "dns"
 : :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns"]}, :args nil}
 : :input "--config" "config-dev.edn" "--config" "other.edn" "dns" "get"
@@ -33,11 +36,13 @@ is that under babashka some older version of the library is getting hit.
 : :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns" "get"], :verbose true}, :args nil}
 : :input "--config" "config-dev.edn" "--config=other.edn" "dns" "get"
 : :output {:dispatch [], :opts {:config ["config-dev.edn" "other.edn" "dns" "get"]}, :args nil}
-
+#+END_EXAMPLE
 
 #+begin_src bash :results output
   bb --version
 #+end_src
 
 #+RESULTS:
+#+BEGIN_EXAMPLE
 : babashka v1.12.194
+#+END_EXAMPLE
